@@ -20,7 +20,7 @@ app.use(
 );
 
 // Fetches from db
-// app.get("/endpoint-here", db.function-name-here);
+app.get("/endpoint-here", db.fetchMatch);
 
 // Initial text
 app.get("/", (request, response) => {
