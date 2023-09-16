@@ -58,6 +58,25 @@ button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
 
+.quiz-container {
+  width: 500px;
+  background: #d4bd91;
+  border-radius: 4px;
+  margin-top: 100px;
+  padding: 30px 60px;
+  box-sizing: border-box;
+}
+
+.active-question-num {
+  font-size: 32px;
+  font-weight: 500;
+}
+
+.total-questions {
+  font-size: 16px;
+  font-weight: 500;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
