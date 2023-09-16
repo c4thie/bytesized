@@ -11,13 +11,13 @@ const Loading = () => {
   useEffect(() => {
     const timeout1 = setTimeout(() => {
       setShowImage1(true);
-    }, 400);
+    }, 500);
     const timeout2 = setTimeout(() => {
       setShowImage2(true);
-    }, 800);
+    }, 1000);
     const timeout3 = setTimeout(() => {
       setShowImage3(true);
-    }, 1200);
+    }, 1500);
 
     return () => {
       clearTimeout(timeout1);

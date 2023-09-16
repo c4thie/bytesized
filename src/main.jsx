@@ -11,6 +11,7 @@ import {
 } from "react-router-dom";
 import QuizPage from "./pages/QuizPage.jsx";
 import MapPage from "./pages/MapPage.jsx";
+import ResultsPage from "./pages/ResultsPage.jsx";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,14 @@ const router = createBrowserRouter([
     element: (
       <div>
         <QuizPage />
+      </div>
+    ),
+  },
+  {
+    path: "results",
+    element: (
+      <div>
+        <ResultsPage />
       </div>
     ),
   },

@@ -9,6 +9,7 @@ const Quiz = ({ questions }) => {
     window.alert(JSON.stringify(values, 0, 2));
     navigate("/map");
   };
+
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [answerArray, setAnswerArray] = useState(
     Array(questions.length).fill(null)
