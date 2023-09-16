@@ -4,6 +4,5 @@ import icon from "./bobaicon.svg";
 import loader from "./bobaloader.gif";
 import pinkTwinkle from "./pink-twinkle-shiny.gif";
 import singleloader from "./boba_loader.gif";
-import spinner from "./spinner.gif";
 
-export { boba1, boba2, icon, loader, pinkTwinkle, singleloader, spinner };
+export { boba1, boba2, icon, loader, pinkTwinkle, singleloader };
