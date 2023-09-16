@@ -13,64 +13,53 @@ const container = {
     opacity: 1,
     transition: {
       duration: 2,
-      delayChildren: 4,
+      delayChildren: 0,
       staggerDirection: -1,
     },
   },
 };
 
-const bounceTransition = {
-  y: {
-    duration: 0.4,
-    yoyo: Infinity,
-    ease: "easeOut",
-  },
-};
-
 const GetStarted = () => {
-  // const [showBoba, setShowBoba] = useState(false);
-  // const [showButton, setShowButton] = useState(false);
-
-  // useEffect(() => {
-  //   const timeout1 = setTimeout(() => {
-  //     setShowImage1(true);
-  //   }, 400);
-  //   const timeout2 = setTimeout(() => {
-  //     setShowImage2(true);
-  //   }, 800);
-  //   const timeout3 = setTimeout(() => {
-  //     setShowImage3(true);
-  //   }, 1200);
-
-  //   return () => {
-  //     clearTimeout(timeout1);
-  //     clearTimeout(timeout2);
-  //     clearTimeout(timeout3);
-  //   };
-  // }, []);
   return (
     <motion.div
       variants={container}
       initial="hidden"
       animate="show"
-      className="container"
+      className="getstarted-container"
     >
+      <div className="getstarted-text-container">
+        <h2 className="getstarted-title">ByteSized Boba</h2>
+        <p className="getstarted-description">
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
+          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+          aliquip ex ea commodo consequat. Duis aute irure dolor in
+          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+          culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+        <motion.div
+          transition={{ duration: 0.6 }}
+          whileHover={{ scale: [1, 1.05], originX: 0 }}
+          whileTap={{ scale: 0.9 }}
+        >
+          <Link to="/quiz" className="container-button">
+            Get Started
+          </Link>
+        </motion.div>
+      </div>
       <motion.img
-        initial={{ y: 0 }}
-        // animate={{ ...bounceTransition }}
-        end={{ y: -50 }}
+        animate={{ y: -15 }}
+        transition={{
+          delay: 0.3,
+          duration: 2,
+          ease: [0, 0.335, 0.925, 1],
+          repeat: Infinity,
+          repeatType: "reverse",
+        }}
         src={boba1}
         alt="Boba"
       />
-      <motion.div
-        transition={{ duration: 0.6 }}
-        whileHover={{ scale: 1.1 }}
-        whileTap={{ scale: 0.9 }}
-      >
-        <Link to="/quiz" className="container-button">
-          Get Started
-        </Link>
-      </motion.div>
     </motion.div>
   );
 };

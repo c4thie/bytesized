@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import "./App.css";
 import Loading from "./components/Loading";
-import GetStarted from "./components/GetStarted";
 import { AnimatePresence } from "framer-motion";
+import GetStarted from "./components/GetStarted";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
 
-  setTimeout(() => setIsLoading(false), 1500);
+  setTimeout(() => setIsLoading(false), 1750);
 
   return (
     <>
