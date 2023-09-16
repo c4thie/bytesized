@@ -11,17 +11,31 @@ const Quiz = ({ questions }) => {
   };
 
   const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [selectedAnswer, setSelectedAnswer] = useState(null);
   const [answerArray, setAnswerArray] = useState(
     Array(questions.length).fill(null)
   );
   const { question, choices } = questions[currentQuestion];
-  const onAnswerClick = (answer) => {
+  const onSelection = (choice, index) => {
+    setSelectedAnswer(index);
     const updatedAnswers = [...answerArray];
-    updatedAnswers[currentQuestion] = answer;
+    updatedAnswers[currentQuestion] = choice;
     setAnswerArray(updatedAnswers);
-    console.log(updatedAnswers);
+  };
+
+  const onClickNext = () => {
+    setSelectedAnswer(null);
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
+    } else {
+      navigate("/results"); // need to change
+    }
+  };
+
+  const onClickBack = () => {
+    setSelectedAnswer(null);
+    if (currentQuestion > 0) {
+      setCurrentQuestion(currentQuestion - 1);
     }
   };
 
@@ -31,13 +45,36 @@ const Quiz = ({ questions }) => {
         <span className="active-question-num">{currentQuestion + 1}</span>
         <span className="total-questions">/{questions.length}</span>
         <h2>{question}</h2>
-        <u1>
-          {choices.map((answer) => (
-            <li onClick={() => onAnswerClick(answer)} key={answer}>
-              {answer}
+        <ul>
+          {choices.map((choice, index) => (
+            <li
+              onClick={() => onSelection(choice, index)}
+              key={choice}
+              //   className={selectedAnswer === index ? "selected-answer" : null}
+              className={
+                answerArray[currentQuestion] === choice
+                  ? "selected-answer"
+                  : null
+              }
+            >
+              {choice}
             </li>
           ))}
-        </u1>
+        </ul>
+        <div className="footer">
+          {currentQuestion !== 0 && (
+            <button className="button" onClick={onClickBack}>
+              Back
+            </button>
+          )}
+          <button
+            className="button"
+            onClick={onClickNext}
+            disabled={answerArray[currentQuestion] === null}
+          >
+            {currentQuestion === questions.length - 1 ? "Finish" : "Next"}
+          </button>
+        </div>
       </>
     </div>
   );

@@ -77,6 +77,33 @@ button:focus-visible {
   font-weight: 500;
 }
 
+ul {
+  margin-top: 40px;
+  margin-left: -40px;
+}
+
+li {
+  text-decoration: none;
+  list-style: none;
+  font-size: 16px;
+  color: #5c3e2a;
+  border: 1px solid rgba(255, 255, 255, 0.87);
+  border-radius: 16px;
+  cursor: pointer;
+}
+
+.selected-answer {
+  background: #42280e;
+  border: 1px solid #5c3e2a;
+  color: rgba(255, 255, 255, 0.87);
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+  gap: 230px;
+}
+
 @media (prefers-color-scheme: light) {
   :root {
     color: #213547;
