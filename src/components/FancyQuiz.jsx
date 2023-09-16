@@ -40,42 +40,45 @@ const Quiz = ({ questions }) => {
   };
 
   return (
-    <div className="quiz-container">
-      <>
-        <span className="active-question-num">{currentQuestion + 1}</span>
-        <span className="total-questions">/{questions.length}</span>
-        <h2>{question}</h2>
-        <ul>
-          {choices.map((choice, index) => (
-            <li
-              onClick={() => onSelection(choice, index)}
-              key={choice}
-              //   className={selectedAnswer === index ? "selected-answer" : null}
-              className={
-                answerArray[currentQuestion] === choice
-                  ? "selected-answer"
-                  : null
-              }
+    <div className="quiz-module">
+      <h2>First Tell Us a Bit About You</h2>
+      <div className="quiz-container">
+        <>
+          <span className="active-question-num">{currentQuestion + 1}</span>
+          <span className="total-questions">/{questions.length}</span>
+          <h2>{question}</h2>
+          <ul>
+            {choices.map((choice, index) => (
+              <li
+                onClick={() => onSelection(choice, index)}
+                key={choice}
+                //   className={selectedAnswer === index ? "selected-answer" : null}
+                className={
+                  answerArray[currentQuestion] === choice
+                    ? "selected-answer"
+                    : null
+                }
+              >
+                {choice}
+              </li>
+            ))}
+          </ul>
+          <div className="footer">
+            {currentQuestion !== 0 && (
+              <button className="button" onClick={onClickBack}>
+                Back
+              </button>
+            )}
+            <button
+              className="button"
+              onClick={onClickNext}
+              disabled={answerArray[currentQuestion] === null}
             >
-              {choice}
-            </li>
-          ))}
-        </ul>
-        <div className="footer">
-          {currentQuestion !== 0 && (
-            <button className="button" onClick={onClickBack}>
-              Back
+              {currentQuestion === questions.length - 1 ? "Finish" : "Next"}
             </button>
-          )}
-          <button
-            className="button"
-            onClick={onClickNext}
-            disabled={answerArray[currentQuestion] === null}
-          >
-            {currentQuestion === questions.length - 1 ? "Finish" : "Next"}
-          </button>
-        </div>
-      </>
+          </div>
+        </>
+      </div>
     </div>
   );
 };

@@ -13,7 +13,7 @@ import "./MapPage.css";
 import { close } from "../assets";
 
 const containerStyle = {
-  width: "600px",
+  width: "800px",
   height: "600px",
 };
 
@@ -69,7 +69,7 @@ const MapPage = () => {
               }}
             >
               <div className="infobox">
-                <img src={close} alt="close" />
+                <img src={close} alt="close" onClick={toggleCloseHandler} />
                 <h4 className="infobox-title">Sweet Dreams</h4>
                 <p className="infobox-address">
                   170 University Ave W Waterloo, ON N2L 3E9 Canada

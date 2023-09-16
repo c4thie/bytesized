@@ -6,13 +6,11 @@
   color: black;
   overflow-y: hidden;
   gap: 0;
-
-  
 }
 
 .infobox img {
   display: flex;
-  justify-self: first baseline;
+  align-self: flex-end;
 }
 
 .infobox img {
