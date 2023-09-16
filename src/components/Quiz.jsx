@@ -1,14 +1,17 @@
 import React from "react";
 import { Form, Field } from "react-final-form";
+import { useNavigate } from "react-router-dom";
 
-const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
-
-const onSubmit = async (values) => {
-  await sleep(300);
-  window.alert(JSON.stringify(values, 0, 2));
-};
+// const sleep = (ms) => new Promise((resolve) => setTimeout(resolve, ms));
 
 const Quiz = () => {
+  const navigate = useNavigate();
+
+  const onSubmit = (values) => {
+    // do something with the values
+    window.alert(JSON.stringify(values, 0, 2));
+    navigate("/map");
+  };
   return (
     <div>
       <h2>Quiz</h2>
