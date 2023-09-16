@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 24px;
+}
+
+.container img {
+  width: 190px;
+  height: 190px;
+}
+
+.container-button {
+  font-size: 20px;
+  font-weight: 400;
+  color: white;
+  border-radius: 12px;
+  border: 1px rgb(163, 128, 75) solid;
+  padding: 13px 25px;
+  background-color: rgb(163, 128, 75);
+}
+
+.container-button:hover {
+  color: rgb(163, 128, 75);
+  background-color: rgb(228, 228, 228);
+  transition: all 0.3s ease-out;
+}
+
+/* @keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  img.boba {
+    animation: logo-spin infinite 20s linear;
+  }
+} */

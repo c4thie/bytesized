@@ -1,0 +1,10 @@
+.loading-container {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}
+
+.loading-container img {
+  max-width: 22px;
+  max-height: 18px;
+}
