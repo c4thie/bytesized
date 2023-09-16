@@ -1,19 +1,11 @@
 import React from "react";
+import QuizForm from "../components/Quiz";
 
-const MOCKQUIZ = [
-  {
-    f1: "base",
-    a1: ["black", "oolong", "jasmine", "green"],
-  },
-  {
-    f2: "toppings",
-    a1: ["black", "oolong", "jasmine", "green"],
-  },
-];
 const Quiz = () => {
   return (
     <div>
       <h2>Quiz</h2>
+      <QuizForm />
     </div>
   );
 };

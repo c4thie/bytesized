@@ -5,7 +5,7 @@ const GetStarted = () => {
   return (
     <div>
       {/* <h2>Hello</h2> */}
-      <Link to="/map">Get Started</Link>
+      <Link to="/quiz">Get Started</Link>
     </div>
   );
 };
