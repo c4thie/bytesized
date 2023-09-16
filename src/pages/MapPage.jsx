@@ -1,6 +1,7 @@
 import React from "react";
 import { GoogleMap, MarkerF, useJsApiLoader } from "@react-google-maps/api";
 import Loading from "../components/Loading";
+import { icon } from "../assets";
 
 const containerStyle = {
   width: "600px",
@@ -24,31 +25,38 @@ const MapPage = () => {
       <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}>
         <MarkerF
           position={{ lat: 43.47291357044051, lng: -80.54269479945117 }}
-          label="Chatime"
+          icon={icon}
+          // label="Chatime"
         />
         <MarkerF
           position={{ lat: 43.47207286948884, lng: -80.53905491794353 }}
-          label="Sweet Dreams"
+          icon={icon}
+          // label="Sweet Dreams"
         />
         <MarkerF
           position={{ lat: 43.47177310692343, lng: -80.538539933834237 }}
-          label="The Alley"
+          icon={icon}
+          // label="The Alley"
         />
         <MarkerF
           position={{ lat: 43.47623215976741, lng: -80.53861950549259 }}
-          label="Gong Cha"
+          icon={icon}
+          // label="Gong Cha"
         />
         <MarkerF
           position={{ lat: 43.47301112552648, lng: -80.53501529298342 }}
-          label="Machi Machi"
+          icon={icon}
+          // label="Machi Machi"
         />
         <MarkerF
           position={{ lat: 43.47284174311075, lng: -80.53388417305472 }}
-          label="CoCo Fresh Tea & Juice"
+          icon={icon}
+          // label="CoCo Fresh Tea & Juice"
         />
         <MarkerF
           position={{ lat: 43.47555180479398, lng: -80.53557187580549 }}
-          label="Now Tea"
+          icon={icon}
+          // label="Now Tea"
         />
       </GoogleMap>
     </div>
