@@ -41,11 +41,9 @@ const Quiz = ({ questions }) => {
 
   return (
     <div className="quiz-module">
-      <h2>First Tell Us a Bit About You</h2>
+      <h2 className="quiz-title">Tell us a bit about yourself</h2>
       <div className="quiz-container">
         <>
-          <span className="active-question-num">{currentQuestion + 1}</span>
-          <span className="total-questions">/{questions.length}</span>
           <h2>{question}</h2>
           <ul>
             {choices.map((choice, index) => (
@@ -64,11 +62,18 @@ const Quiz = ({ questions }) => {
             ))}
           </ul>
           <div className="footer">
-            {currentQuestion !== 0 && (
-              <button className="button" onClick={onClickBack}>
-                Back
-              </button>
-            )}
+            <button
+              className={`button ${
+                currentQuestion === 0 ? "hide-back-button" : ""
+              }`}
+              onClick={onClickBack}
+            >
+              Back
+            </button>
+            <div>
+              <span className="active-question-num">{currentQuestion + 1}</span>
+              <span className="total-questions">/{questions.length}</span>
+            </div>
             <button
               className="button"
               onClick={onClickNext}

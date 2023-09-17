@@ -2,12 +2,12 @@ export const preferenceQuiz = {
   questions: [
     {
       question: "What are you feeling today?",
-      choices: ["Happy", "Sad", "Sick", "Stressed", "Adventurous"],
+      choices: ["Happy", "Sad", "Sick", "Stressed"],
       type: "MCQs",
     },
     {
       question: "What type of drink do you usually get?",
-      choices: ["Fruity", "New Each TIme", "Milk Tea", "Something Warm"],
+      choices: ["Fruity", "New", "Milk Tea", "Something Warm"],
       type: "MCQs",
     },
     {
