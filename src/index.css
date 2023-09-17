@@ -89,6 +89,12 @@ button:focus-visible {
   margin-top: 17px;
 }
 
+.quiz-choice img {
+  object-fit: contain;
+  width: 140px;
+  height: 140px;
+}
+
 .active-question-num {
   font-size: 18px;
   font-weight: 500;
