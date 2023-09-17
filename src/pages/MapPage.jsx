@@ -4,15 +4,13 @@ import {
   HStack,
   Stack,
   StackDivider,
-  Text,
   Image,
-  VStack,
-  Flex,
-  Spacer,
 } from "@chakra-ui/react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
+import Card from "../components/Card";
 import Loading from "../components/Loading";
 import MapMarker from "../components/MapMarker";
+import { boba2 } from "../assets";
 import "./MapPage.css";
 
 const containerStyle = {
