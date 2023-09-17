@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Quiz = ({ questions }) => {
   const navigate = useNavigate();
@@ -16,6 +17,7 @@ const Quiz = ({ questions }) => {
     Array(questions.length).fill(null)
   );
   const { question, choices } = questions[currentQuestion];
+
   const onSelection = (choice, index) => {
     setSelectedAnswer(index);
     const updatedAnswers = [...answerArray];
@@ -45,9 +47,14 @@ const Quiz = ({ questions }) => {
       <div className="quiz-container">
         <>
           <h2>{question}</h2>
-          <ul>
-            {choices.map((choice, index) => (
-              <li
+          <ul className="quiz-choice">
+            {choices.map(({ choice, image }, index) => (
+              <motion.li
+                transition={{ duration: 0.6 }}
+                whileHover={{
+                  scale: [1, 1.05],
+                }}
+                whileTap={{ scale: 0.9 }}
                 onClick={() => onSelection(choice, index)}
                 key={choice}
                 //   className={selectedAnswer === index ? "selected-answer" : null}
@@ -58,7 +65,8 @@ const Quiz = ({ questions }) => {
                 }
               >
                 {choice}
-              </li>
+                <img src={image} alt="image" />
+              </motion.li>
             ))}
           </ul>
           <div className="footer">

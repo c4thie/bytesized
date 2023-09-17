@@ -5,6 +5,10 @@ import {
   Stack,
   StackDivider,
   Text,
+  Image,
+  VStack,
+  Flex,
+  Spacer,
 } from "@chakra-ui/react";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import Loading from "../components/Loading";
@@ -12,7 +16,9 @@ import MapMarker from "../components/MapMarker";
 import "./MapPage.css";
 
 const containerStyle = {
-  width: "800px",
+  border: "1px solid transparent",
+  borderRadius: "20px",
+  width: "100vw",
   height: "600px",
 };
 
@@ -74,31 +80,30 @@ const MapPage = () => {
         />
       </GoogleMap>
 
-      <Stack divider={<StackDivider />} spacing="4" color="#5c3e2a">
-        <Box bg="white">
-          <Heading size="xs" textTransform="uppercase">
-            BOBA
-          </Heading>
-          <Text pt="2" fontSize="sm">
-            View a summary of all your clients over the last month.
-          </Text>
+      <Stack
+        divider={<StackDivider />}
+        spacing="0"
+        color="#5c3e2a"
+        border="1 solid transparent"
+        borderRadius="20"
+      >
+        <Box bg="#a78054" paddingX="18" paddingY="10">
+          <HStack margin="0">
+            <Image
+              boxSize="95"
+              objectFit="cover"
+              src={boba2}
+              alt="boba image"
+            />
+            <Heading margin="0" textAlign="left" size="xs" textTransform="">
+              Brown Sugar Milk Tea
+            </Heading>
+          </HStack>
         </Box>
-        <Box bg="white">
-          <Heading size="xs" textTransform="uppercase">
-            MORE BOBA
-          </Heading>
-          <Text pt="2" fontSize="sm">
-            Check out the overview of your clients.
-          </Text>
-        </Box>
-        <Box bg="white">
-          <Heading size="xs" textTransform="uppercase">
-            BOBOBO
-          </Heading>
-          <Text pt="2" fontSize="sm">
-            See a detailed analysis of all your business clients.
-          </Text>
-        </Box>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </Stack>
     </HStack>
   );
