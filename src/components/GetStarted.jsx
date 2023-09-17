@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import { boba1 } from "../assets";
 import "./GetStarted.css";
@@ -28,15 +28,17 @@ const GetStarted = () => {
       className="getstarted-container"
     >
       <div className="getstarted-text-container">
-        <h2 className="getstarted-title">ByteSized Boba</h2>
+        <h2 className="getstarted-title">Byte Sized Boba</h2>
         <p className="getstarted-description">
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+          Do you have a friend who always takes forever to decide what to order?
+          Or maybe you’re that friend? The average student in Waterloo has easy
+          access to over 10 different bubble tea shops (source: trust me).
+          Whether you’re happy or sad or just want to lose money, Byte Sized
+          Boba can help you decide what to get. We created Byte Sized Boba
+          because we really wanted bubble tea on the first day of the hackathon
+          but didn’t end up going. We always have bubble tea in our mind and
+          hope our users do too. Start off with our quiz to find out your
+          recommend beverage.
         </p>
         <motion.div
           transition={{ duration: 0.6 }}
