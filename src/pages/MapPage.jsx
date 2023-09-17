@@ -1,5 +1,13 @@
 import { useState, useEffect } from "react";
 import {
+  Box,
+  Heading,
+  HStack,
+  Stack,
+  StackDivider,
+  Text,
+} from "@chakra-ui/react";
+import {
   GoogleMap,
   MarkerF,
   OverlayView,
@@ -43,43 +51,72 @@ const MapPage = () => {
     "https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png";
 
   const section = (
-    <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}>
-      <MarkerF
-        position={{ lat: 43.47207286948884, lng: -80.53905491794353 }}
-        onClick={toggleOpenHandler}
-      >
-        {isOpen && (
-          <InfoBox
-            // defaultPosition={
-            //   new google.maps.LatLng(
-            //     43.47207286948884 - 10,
-            //     -80.53905491794353 - 10
-            //   )
-            // }
-            onCloseClick={toggleCloseHandler}
-            options={{ closeBoxURL: ``, enableEventPropagation: true }}
-          >
-            <div
-              style={{
-                backgroundColor: `white`,
-                borderRadius: `8px`,
-                boxShadow: `2px 2px 2px 2px rgba(0, 0, 0, 0.2)`,
-                opacity: 1,
-                padding: `12px`,
-              }}
+    <HStack>
+      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}>
+        <MarkerF
+          position={{ lat: 43.47207286948884, lng: -80.53905491794353 }}
+          onClick={toggleOpenHandler}
+        >
+          {isOpen && (
+            <InfoBox
+              // defaultPosition={
+              //   new google.maps.LatLng(
+              //     43.47207286948884 - 10,
+              //     -80.53905491794353 - 10
+              //   )
+              // }
+              onCloseClick={toggleCloseHandler}
+              options={{ closeBoxURL: ``, enableEventPropagation: true }}
             >
-              <div className="infobox">
-                <img src={close} alt="close" onClick={toggleCloseHandler} />
-                <h4 className="infobox-title">Sweet Dreams</h4>
-                <p className="infobox-address">
-                  170 University Ave W Waterloo, ON N2L 3E9 Canada
-                </p>
+              <div
+                style={{
+                  backgroundColor: `white`,
+                  borderRadius: `8px`,
+                  boxShadow: `2px 2px 2px 2px rgba(0, 0, 0, 0.2)`,
+                  opacity: 1,
+                  padding: `12px`,
+                }}
+              >
+                <div className="infobox">
+                  <img src={close} alt="close" onClick={toggleCloseHandler} />
+                  <h4 className="infobox-title">Sweet Dreams</h4>
+                  <p className="infobox-address">
+                    170 University Ave W Waterloo, ON N2L 3E9 Canada
+                  </p>
+                </div>
               </div>
-            </div>
-          </InfoBox>
-        )}
-      </MarkerF>
-    </GoogleMap>
+            </InfoBox>
+          )}
+        </MarkerF>
+      </GoogleMap>
+
+      <Stack divider={<StackDivider />} spacing="4" color="#5c3e2a">
+        <Box bg="white">
+          <Heading size="xs" textTransform="uppercase">
+            BOBA
+          </Heading>
+          <Text pt="2" fontSize="sm">
+            View a summary of all your clients over the last month.
+          </Text>
+        </Box>
+        <Box bg="white">
+          <Heading size="xs" textTransform="uppercase">
+            MORE BOBA
+          </Heading>
+          <Text pt="2" fontSize="sm">
+            Check out the overview of your clients.
+          </Text>
+        </Box>
+        <Box bg="white">
+          <Heading size="xs" textTransform="uppercase">
+            BOBOBO
+          </Heading>
+          <Text pt="2" fontSize="sm">
+            See a detailed analysis of all your business clients.
+          </Text>
+        </Box>
+      </Stack>
+    </HStack>
   );
 
   return isLoaded ? (
