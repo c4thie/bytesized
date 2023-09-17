@@ -24,7 +24,8 @@ import "./MapPage.css";
 
 import { boba2, close } from "../assets";
 
-import Card from "../components/Card";
+import Card from "../components/LocationCard";
+import LocationCart from "../components/LocationCard";
 
 const containerStyle = {
   border: "1px solid transparent",
@@ -110,10 +111,10 @@ const MapPage = () => {
             </Heading>
           </HStack>
         </Box>
-        <Card />
-        <Card />
-        <Card />
-        <Card />
+        <LocationCart />
+        <LocationCart />
+        <LocationCart />
+        <LocationCart />
       </Stack>
     </HStack>
   );
