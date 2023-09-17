@@ -23,23 +23,23 @@ import {
 } from "@react-google-maps/api";
 import Loading from "./Loading";
 
-const LocationCart = () => {
+const LocationCart = ({ name, hours, distance, price, lat, lng }) => {
   return (
     <Box bg="white" paddingX="20" borderTop="1 solid black">
       <Flex alignItems="center">
-        <Heading size="xs" textTransform="">
-          Sweet Dreams
+        <Heading size="xs" textTransform="" textAlign="left">
+          {name}
         </Heading>
         <Spacer />
-        <Text>7.99$</Text>
+        <Text>{price}$</Text>
       </Flex>
       <Flex direction="row" marginBottom="15">
         <Box fontSize="sm" textAlign="left" w="30">
-          Hours: 11h00-0h00
+          {hours}
         </Box>
         <Spacer />
         <Box color="#a78054" fontWeight="bold" fontSize="sm" textAlign="left">
-          2.6 km
+          {distance} km
         </Box>
       </Flex>
     </Box>

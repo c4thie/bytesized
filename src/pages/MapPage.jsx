@@ -1,3 +1,4 @@
+import { useState } from "react";
 import {
   Box,
   Heading,
@@ -5,24 +6,40 @@ import {
   Stack,
   StackDivider,
   Image,
+  Text,
+  Flex,
+  Link as ChakraLink,
 } from "@chakra-ui/react";
+import { ArrowBackIcon } from "@chakra-ui/icons";
+import { Link as ReactRouterLink } from "react-router-dom";
 import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
-import Card from "../components/Card";
+import LocationCard from "../components/LocationCard";
 import Loading from "../components/Loading";
 import MapMarker from "../components/MapMarker";
 import { boba2 } from "../assets";
+import { motion } from "framer-motion";
 import "./MapPage.css";
-
-import { boba2, close } from "../assets";
-
-import Card from "../components/LocationCard";
-import LocationCard from "../components/LocationCard";
 
 const containerStyle = {
   border: "1px solid transparent",
   borderRadius: "20px",
-  width: "100vw",
-  height: "600px",
+  width: "70vw",
+  height: "575px",
+};
+
+const container = {
+  hidden: {
+    opacity: 0,
+    transition: { duration: 2 },
+  },
+  show: {
+    opacity: 1,
+    transition: {
+      duration: 2,
+      delayChildren: 0,
+      staggerDirection: -1,
+    },
+  },
 };
 
 const center = {
@@ -35,6 +52,10 @@ const MapPage = () => {
     id: "google-map-script",
     googleMapsApiKey: "AIzaSyC-HOySpdgEI_RDb-LBB_ed_jqr0DM0FQk",
   });
+
+  const [isLoading, setIsLoading] = useState(true);
+
+  setTimeout(() => setIsLoading(false), 1750);
 
   const section = (
     <HStack>
@@ -84,6 +105,8 @@ const MapPage = () => {
       </GoogleMap>
 
       <Stack
+        maxHeight="575"
+        overflowY="scroll"
         divider={<StackDivider />}
         spacing="0"
         color="#5c3e2a"
@@ -98,20 +121,113 @@ const MapPage = () => {
               src={boba2}
               alt="boba image"
             />
-            <Heading margin="0" textAlign="left" size="xs" textTransform="">
-              Brown Sugar Milk Tea
-            </Heading>
+            <Flex direction="column">
+              <Text
+                margin="0"
+                textAlign="left"
+                fontSize="xl"
+                fontWeight="bold"
+                textTransform=""
+              >
+                Your result is:
+              </Text>
+              <Text
+                margin="0"
+                textAlign="left"
+                fontSize="3xl"
+                fontWeight="bold"
+                textTransform=""
+              >
+                Brown Sugar Milk Tea
+              </Text>
+              <ChakraLink
+                as={ReactRouterLink}
+                to="/quiz"
+                color="#f4f4f4"
+                margin="0"
+                textAlign="left"
+                fontSize="xl"
+                fontWeight="bold"
+                textDecoration="none"
+                alignItems="center"
+              >
+                <ArrowBackIcon
+                  marginRight="1"
+                  marginTop="5"
+                  verticalAlign="top"
+                />{" "}
+                Retake Quiz
+              </ChakraLink>
+            </Flex>
           </HStack>
         </Box>
-        <LocationCard />
-        <LocationCard />
-        <LocationCard />
-        <LocationCard />
+        <LocationCard
+          name="CoCo Fresh Tea & Juice"
+          distance={2.6}
+          price={7.99}
+          hours="11:00-23:00"
+          lat={43.47284174311075}
+          lng={80.53388417305472}
+        />
+        <LocationCard
+          name="Now Tea"
+          distance={2.6}
+          price={7.99}
+          hours="11:00-23:00"
+          lat={43.47555180479398}
+          lng={-80.53557187580549}
+        />
+        <LocationCard
+          name="Machi Machi"
+          distance={2.6}
+          price={7.99}
+          hours="11:00-23:00"
+          lat={43.47301112552648}
+          lng={-80.53501529298342}
+        />
+        <LocationCard
+          name="Gong Cha"
+          distance={2.6}
+          price={7.99}
+          hours="11:00-23:00"
+          lat={43.47623215976741}
+          lng={-80.53861950549259}
+        />
+        <LocationCard
+          name="The Alley"
+          distance={2.6}
+          price={7.99}
+          hours="11:00-23:00"
+          lat={43.47177310692343}
+          lng={-80.538539933834237}
+        />
+        <LocationCard
+          name="Chatime"
+          distance={2.6}
+          price={7.99}
+          hours="11:00-23:00"
+          lat={43.47291357044051}
+          lng={-80.54269479945117}
+        />
+        <LocationCard
+          name="Sweet Dreams"
+          distance={2.6}
+          price={7.99}
+          hours="11:00-23:00"
+          lat={43.47207286948884}
+          lng={-80.53905491794353}
+        />
       </Stack>
     </HStack>
   );
 
-  return isLoaded ? <div>{section}</div> : <Loading />;
+  return !isLoading ? (
+    <motion.div variants={container} initial="hidden" animate="show">
+      {section}
+    </motion.div>
+  ) : (
+    <Loading />
+  );
 };
 
 export default MapPage;
