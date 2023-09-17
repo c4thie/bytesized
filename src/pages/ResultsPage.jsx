@@ -1,9 +1,8 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { boba2, pinkTwinkle } from "../assets";
 import "./ResultsPage.css";
 import { motion, AnimateSharedLayout } from "framer-motion";
-
 
 const sampletags = [
   { key: 1, name: "#tapioca-pearls" },
@@ -46,6 +45,10 @@ const bobaVariants = {
 };
 
 const ResultsPage = ({ tags }) => {
+  const location = useLocation();
+  const drinkCode = location.state && location.state.drinkCode;
+
+  console.log("Drink Code:", drinkCode);
   return (
     <motion.div
       initial="hidden"

@@ -16,13 +16,21 @@ const Quiz = ({ questions }) => {
   const [answerArray, setAnswerArray] = useState(
     Array(questions.length).fill(null)
   );
+  const [codeArray, setCodeArray] = useState(
+    Array(questions.length).fill(null)
+  );
   const { question, choices } = questions[currentQuestion];
 
   const onSelection = (choice, index) => {
     setSelectedAnswer(index);
+    // answer for highlighting
     const updatedAnswers = [...answerArray];
     updatedAnswers[currentQuestion] = choice;
     setAnswerArray(updatedAnswers);
+    // codes for data base search
+    const updatedCodes = [...codeArray];
+    updatedCodes[currentQuestion] = choices[index].code;
+    setCodeArray(updatedCodes);
   };
 
   const onClickNext = () => {
@@ -30,7 +38,7 @@ const Quiz = ({ questions }) => {
     if (currentQuestion < questions.length - 1) {
       setCurrentQuestion(currentQuestion + 1);
     } else {
-      navigate("/results"); // need to change
+      navigate("/results", { state: { drinkCode: codeArray.join("") } }); // need to change
     }
   };
 
