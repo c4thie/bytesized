@@ -6,6 +6,10 @@ import {
   Stack,
   StackDivider,
   Text,
+  Image,
+  VStack,
+  Flex,
+  Spacer,
 } from "@chakra-ui/react";
 import {
   GoogleMap,
@@ -18,10 +22,14 @@ import {
 import Loading from "../components/Loading";
 import "./MapPage.css";
 
-import { close } from "../assets";
+import { boba2, close } from "../assets";
+
+import Card from "../components/Card";
 
 const containerStyle = {
-  width: "800px",
+  border: "1px solid transparent",
+  borderRadius: "20px",
+  width: "100vw",
   height: "600px",
 };
 
@@ -37,13 +45,11 @@ const MapPage = () => {
     googleMapsApiKey: "AIzaSyC-HOySpdgEI_RDb-LBB_ed_jqr0DM0FQk",
   });
 
-  useEffect(() => {}, [isOpen]);
-
-  const toggleOpenHandler = (prevState) => {
+  const toggleOpenHandler = () => {
     setIsOpen(true);
   };
 
-  const toggleCloseHandler = (prevState) => {
+  const toggleCloseHandler = () => {
     setIsOpen(false);
   };
 
@@ -59,12 +65,6 @@ const MapPage = () => {
         >
           {isOpen && (
             <InfoBox
-              // defaultPosition={
-              //   new google.maps.LatLng(
-              //     43.47207286948884 - 10,
-              //     -80.53905491794353 - 10
-              //   )
-              // }
               onCloseClick={toggleCloseHandler}
               options={{ closeBoxURL: ``, enableEventPropagation: true }}
             >
@@ -90,38 +90,37 @@ const MapPage = () => {
         </MarkerF>
       </GoogleMap>
 
-      <Stack divider={<StackDivider />} spacing="4" color="#5c3e2a">
-        <Box bg="white">
-          <Heading size="xs" textTransform="uppercase">
-            BOBA
-          </Heading>
-          <Text pt="2" fontSize="sm">
-            View a summary of all your clients over the last month.
-          </Text>
+      <Stack
+        divider={<StackDivider />}
+        spacing="0"
+        color="#5c3e2a"
+        border="1 solid transparent"
+        borderRadius="20"
+      >
+        <Box bg="#a78054" paddingX="18" paddingY="10">
+          <HStack margin="0">
+            <Image
+              boxSize="95"
+              objectFit="cover"
+              src={boba2}
+              alt="boba image"
+            />
+            <Heading margin="0" textAlign="left" size="xs" textTransform="">
+              Brown Sugar Milk Tea
+            </Heading>
+          </HStack>
         </Box>
-        <Box bg="white">
-          <Heading size="xs" textTransform="uppercase">
-            MORE BOBA
-          </Heading>
-          <Text pt="2" fontSize="sm">
-            Check out the overview of your clients.
-          </Text>
-        </Box>
-        <Box bg="white">
-          <Heading size="xs" textTransform="uppercase">
-            BOBOBO
-          </Heading>
-          <Text pt="2" fontSize="sm">
-            See a detailed analysis of all your business clients.
-          </Text>
-        </Box>
+        <Card />
+        <Card />
+        <Card />
+        <Card />
       </Stack>
     </HStack>
   );
 
   return isLoaded ? (
     <div>
-      byte sized map
+      <h1>ByteSized Map</h1>
       {section}
       {/* <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={16}>
         <MarkerF

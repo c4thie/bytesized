@@ -16,6 +16,7 @@ const Quiz = ({ questions }) => {
     Array(questions.length).fill(null)
   );
   const { question, choices } = questions[currentQuestion];
+
   const onSelection = (choice, index) => {
     setSelectedAnswer(index);
     const updatedAnswers = [...answerArray];

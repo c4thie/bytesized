@@ -21,7 +21,7 @@
 .results-title {
   font-size: 40px;
   margin-bottom: auto;
-  color: rgb(167, 128, 84);
+  color: #a78054;
 }
 
 .results-title img {
@@ -48,7 +48,7 @@
   justify-content: flex-start;
   font-size: 13px;
   font-weight: 400;
-  color: rgb(102, 80, 47);
+  color: #66502f;
   border-radius: 40px;
   border: 1px rgb(102, 80, 47) solid;
   padding: 5px 10px;
@@ -67,12 +67,7 @@
 
 .container-button:hover {
   color: white;
-  background: rgb(255, 105, 199);
-  background: linear-gradient(
-    90deg,
-    rgba(255, 105, 199, 1) 0%,
-    rgba(255, 212, 171, 1) 100%
-  );
+  background: #66502f;
   transition: all 1s ease-in;
 }
 
