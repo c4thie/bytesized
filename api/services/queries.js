@@ -22,26 +22,25 @@ pool.on("connect", () => {
   console.log("connected to the Database");
 });
 
-pool.query("SELECT * FROM shops", (error, results) => {
-  if (error) {
-    console.error("Error executing query:", error);
-  } else {
-    console.log("Query Result:", results.rows);
-  }
-  // response.status(200).json(results.rows);
-  // pool.end();
-});
+// pool.query("SELECT * FROM shops", (error, results) => {
+//   if (error) {
+//     console.error("Error executing query:", error);
+//   } else {
+//     console.log("Query Result:", results.rows);
+//   }
+//   // response.status(200).json(results.rows);
+//   // pool.end();
+// });
 
 const fetchMatch = (request, response) => {
   console.log("Route Accessed");
-  const selected1 = request.params.param1;
-  const selected2 = request.params.param2;
-  const selected3 = request.params.param3;
+  const code = request.params.drinkCode;
   pool.query(
-    "SELECT * FROM tb WHERE $1 = ANY, $2 = ANY, $3 = ANY",
-    [selected1, selected2, selected3],
+    "SELECT * FROM drinksv2 WHERE code LIKE $1",
+    [code],
     (error, results) => {
       if (error) {
+        console.error("Hit error when accessing drinks-v2");
         throw error;
       }
       console.log("Query Result:", results.rows);

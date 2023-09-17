@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { boba2, pinkTwinkle } from "../assets";
 import {
   boba2,
   pinkTwinkle,
@@ -11,6 +10,7 @@ import {
 } from "../assets";
 import "./ResultsPage.css";
 import { motion, AnimateSharedLayout } from "framer-motion";
+import fetchMatch from "../utils/api";
 
 const sampletags = [
   { key: 1, name: "#tapioca-pearls" },
@@ -52,13 +52,47 @@ const bobaVariants = {
   },
 };
 
-const ResultsPage = ({ tags }) => {
+const ResultsPage = () => {
+  const [data, setData] = useState(null);
   const location = useLocation();
   const drinkCode = location.state && location.state.drinkCode;
 
   console.log("Drink Code:", drinkCode);
-  const { name, description, image, tags } = drinkCode;
-  
+  // useEffect(async () => {
+  //   try {
+  //     const results = await fetchMatch(drinkCode);
+  //     console.log(results);
+
+  //     if (results.length > 0) {
+  //       const {
+  //         drink_name: name,
+  //         description,
+  //         image_url: image,
+  //         tags,
+  //       } = results[0];
+
+  //       console.log(name, description, image, tags);
+  //     } else {
+  //       console.error("No results found.");
+  //     }
+  //   } catch (error) {
+  //     console.error("Error fetching drink:", error);
+  //   }
+  // }, []);
+
+  useEffect(() => {
+    // Simulating an asynchronous data fetching operation (e.g., an API call)
+    fetchMatch(drinkCode)
+      .then((result) => {
+        setData(result);
+        console.log(result);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, [drinkCode]);
+  console.log(data);
+
   return (
     <motion.div
       initial="hidden"
