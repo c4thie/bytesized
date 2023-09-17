@@ -1,8 +1,5 @@
-# React + Vite
+# Byte Sized Boba
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Byte Sized Boba is a web application that allows users to discover new bubble tea and beverage combinations. Featuring a simple and cozy boba themed interface, users can share their preferences and moods through a quiz. Byte Sized Boba’s algorithm traverses through our beverage database and presents users with a drink suggestion. Users can then find bubble tea stores near them using our built-in interactive map.
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Byte Sized Boba is built on React and Vite. For our map, we used the Google Maps JavaScript API, and for our database we used PostgreSQL. For front end development, we used CSS and the Chakra UI component library.
