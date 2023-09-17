@@ -59,36 +59,56 @@ const ResultsPage = () => {
 
   console.log("Drink Code:", drinkCode);
 
-  function fetchMatch(drinkCode) {
+  // function fetchMatch(drinkCode) {
+  //   const apiUrl = "http://localhost:3000";
+  //   console.log("fetchmatch in api called");
+
+  //   const fetchMatchApiUrl = `${apiUrl}/drink/${drinkCode}`;
+
+  //   fetch(fetchMatchApiUrl)
+  //     .then((response) => {
+  //       if (response.status !== 200) {
+  //         throw new Error("Network response was not 200");
+  //       }
+  //       return response.json();
+  //     })
+  //     .then((data) => {
+  //       console.log("response =>>>>>" + JSON.stringify(data));
+  //       console.log(data);
+  //       return data;
+  //       // const data = JSON.stringify(response);
+  //       // return data;
+  //       // console.log(response);
+  //       // return response.json();
+  //     })
+  //     .catch((error) => {
+  //       console.error("API Error:", error);
+  //     });
+  // }
+  async function fetchMatch(drinkCode) {
     const apiUrl = "http://localhost:3000";
     console.log("fetchmatch in api called");
 
-    const fetchMatchApiUrl = `${apiUrl}/drink/${drinkCode}`;
+    try {
+      const fetchMatchApiUrl = `${apiUrl}/drink/${drinkCode}`;
+      const response = await fetch(fetchMatchApiUrl);
 
-    fetch(fetchMatchApiUrl)
-      .then((response) => {
-        if (response.status !== 200) {
-          throw new Error("Network response was not 200");
-        }
-        return response.json();
-      })
-      .then((data) => {
-        console.log("response =>>>>>" + JSON.stringify(data));
-        console.log(data);
-        return data;
-        // const data = JSON.stringify(response);
-        // return data;
-        // console.log(response);
-        // return response.json();
-      })
-      .catch((error) => {
-        console.error("API Error:", error);
-      });
+      if (response.status !== 200) {
+        throw new Error("Network response was not 200");
+      }
+
+      const data = await response.json();
+      console.log("response =>>>>>", JSON.stringify(data));
+      return data;
+    } catch (error) {
+      console.error("API Error:", error);
+      throw error; // Re-throw the error to handle it in the component.
+    }
   }
 
   useEffect(() => {
-    const fetchData = () => {
-      const result = fetchMatch(drinkCode);
+    const fetchData = async () => {
+      const result = await fetchMatch(drinkCode);
       if (result) {
         setData(result[0]);
       }
@@ -96,14 +116,14 @@ const ResultsPage = () => {
     };
 
     fetchData();
-  }, []);
+  }, [drinkCode]);
 
   console.log(data);
   let image_url, description, name, tags;
   if (data) {
     image_url = data.image_url;
     description = data.description;
-    name = data.name;
+    name = data.drink_name;
     tags = data.tags;
     console.log(data);
   }
@@ -121,23 +141,31 @@ const ResultsPage = () => {
         variants={bobaVariants}
         whileInView="onscreen"
         initial="offscreen"
-        src={image_url || boba2}
+        src={boba2}
         alt="Boba result"
       />
       <div className="results-text-container">
         <h2 className="results-title">
           Results: <br />
           <span className="results-name">
-            {name || "Brown Sugar Pearl Milk Tea"}
+            {name && name}
+            {!name && "Brown Sugar Pearl Milk Tea"}
           </span>
         </h2>
         <div className="results-description">
           <p>
-            {description ||
+            {description && description}
+            {!description &&
               "Brown Sugar Pearl Milk Tea, a Taiwanese delight born in Taichung. This delectable drink blends fresh cold milk with rich brown sugar caramel, creating a symphony of flavors. Topped with chewy tapioca pearls, it's a treat that's taken the world by storm."}
           </p>
           <motion.div className="results-tags">
-            {tags ||
+            {tags?.length >= 1 &&
+              tags.map((tag) => (
+                <div className="results-tag" key={tag.key}>
+                  {tag}
+                </div>
+              ))}
+            {!tags &&
               sampletags.map((tag) => (
                 <div className="results-tag" key={tag.key}>
                   {tag.name}
