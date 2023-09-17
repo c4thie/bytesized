@@ -21,9 +21,9 @@ import {
   InfoBox,
   Marker,
 } from "@react-google-maps/api";
-import Loading from "../components/Loading";
+import Loading from "./Loading";
 
-const Card = () => {
+const LocationCart = () => {
   return (
     <Box bg="white" paddingX="20" borderTop="1 solid black">
       <Flex alignItems="center">
@@ -46,4 +46,4 @@ const Card = () => {
   );
 };
 
-export default Card;
+export default LocationCart;
