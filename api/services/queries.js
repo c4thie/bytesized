@@ -36,7 +36,7 @@ const fetchMatch = (request, response) => {
   console.log("Route Accessed");
   const code = request.params.drinkCode;
   pool.query(
-    "SELECT * FROM drinksv2 WHERE code LIKE $1",
+    "SELECT * FROM drinksv2 WHERE $1 LIKE code",
     [code],
     (error, results) => {
       if (error) {

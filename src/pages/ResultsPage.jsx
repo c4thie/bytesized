@@ -10,7 +10,7 @@ import {
 } from "../assets";
 import "./ResultsPage.css";
 import { motion, AnimateSharedLayout } from "framer-motion";
-import fetchMatch from "../utils/api";
+// import fetchMatch from "../utils/api";
 
 const sampletags = [
   { key: 1, name: "#tapioca-pearls" },
@@ -58,40 +58,55 @@ const ResultsPage = () => {
   const drinkCode = location.state && location.state.drinkCode;
 
   console.log("Drink Code:", drinkCode);
-  // useEffect(async () => {
-  //   try {
-  //     const results = await fetchMatch(drinkCode);
-  //     console.log(results);
 
-  //     if (results.length > 0) {
-  //       const {
-  //         drink_name: name,
-  //         description,
-  //         image_url: image,
-  //         tags,
-  //       } = results[0];
+  function fetchMatch(drinkCode) {
+    const apiUrl = "http://localhost:3000";
+    console.log("fetchmatch in api called");
 
-  //       console.log(name, description, image, tags);
-  //     } else {
-  //       console.error("No results found.");
-  //     }
-  //   } catch (error) {
-  //     console.error("Error fetching drink:", error);
-  //   }
-  // }, []);
+    const fetchMatchApiUrl = `${apiUrl}/drink/${drinkCode}`;
 
-  useEffect(() => {
-    // Simulating an asynchronous data fetching operation (e.g., an API call)
-    fetchMatch(drinkCode)
-      .then((result) => {
-        setData(result);
-        console.log(result);
+    fetch(fetchMatchApiUrl)
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error("Network response was not 200");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log("response =>>>>>" + JSON.stringify(data));
+        console.log(data);
+        return data;
+        // const data = JSON.stringify(response);
+        // return data;
+        // console.log(response);
+        // return response.json();
       })
       .catch((error) => {
-        console.error("Error fetching data:", error);
+        console.error("API Error:", error);
       });
-  }, [drinkCode]);
+  }
+
+  useEffect(() => {
+    const fetchData = () => {
+      const result = fetchMatch(drinkCode);
+      if (result) {
+        setData(result[0]);
+      }
+      console.log("result" + result);
+    };
+
+    fetchData();
+  }, []);
+
   console.log(data);
+  let image_url, description, name, tags;
+  if (data) {
+    image_url = data.image_url;
+    description = data.description;
+    name = data.name;
+    tags = data.tags;
+    console.log(data);
+  }
 
   return (
     <motion.div
@@ -106,7 +121,7 @@ const ResultsPage = () => {
         variants={bobaVariants}
         whileInView="onscreen"
         initial="offscreen"
-        src={image || boba2}
+        src={image_url || boba2}
         alt="Boba result"
       />
       <div className="results-text-container">

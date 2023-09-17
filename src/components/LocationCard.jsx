@@ -23,7 +23,7 @@ import {
 } from "@react-google-maps/api";
 import Loading from "./Loading";
 
-const LocationCart = ({ name, hours, distance, price, lat, lng }) => {
+const LocationCard = ({ name, hours, distance, price, lat, lng }) => {
   return (
     <Box bg="white" paddingX="20" borderTop="1 solid black">
       <Flex alignItems="center">
@@ -46,4 +46,4 @@ const LocationCart = ({ name, hours, distance, price, lat, lng }) => {
   );
 };
 
-export default LocationCart;
+export default LocationCard;

@@ -125,7 +125,7 @@ const MapPage = () => {
             <Image
               boxSize="95"
               objectFit="cover"
-              src={"res.image" || boba2}
+              src={boba2}
               alt="boba image"
             />
             <Flex direction="column">
@@ -145,7 +145,7 @@ const MapPage = () => {
                 fontWeight="bold"
                 textTransform=""
               >
-                {"res.name" || "Brown Sugar Milk Tea"}
+                Brown Sugar Milk Tea
               </Text>
               <ChakraLink
                 as={ReactRouterLink}
@@ -172,7 +172,7 @@ const MapPage = () => {
           name="CoCo Fresh Tea & Juice"
           distance={2.9}
           price={8.99}
-          hours="11:00-23:00"
+          hours="12:00-21:00"
           lat={43.47284174311075}
           lng={80.53388417305472}
         />
@@ -180,7 +180,7 @@ const MapPage = () => {
           name="Now Tea"
           distance={2.6}
           price={7.99}
-          hours="11:00-23:00"
+          hours="11:00-0:00"
           lat={43.47555180479398}
           lng={-80.53557187580549}
         />
