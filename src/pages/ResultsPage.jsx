@@ -1,6 +1,14 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { boba2, pinkTwinkle } from "../assets";
+import {
+  boba2,
+  pinkTwinkle,
+  bobaquiz12,
+  bobaquiz23,
+  bobaquiz24,
+  bobaquiz22,
+} from "../assets";
 import "./ResultsPage.css";
 import { motion, AnimateSharedLayout } from "framer-motion";
 
@@ -49,6 +57,8 @@ const ResultsPage = ({ tags }) => {
   const drinkCode = location.state && location.state.drinkCode;
 
   console.log("Drink Code:", drinkCode);
+  const { name, description, image, tags } = drinkCode;
+  
   return (
     <motion.div
       initial="hidden"
@@ -62,28 +72,28 @@ const ResultsPage = ({ tags }) => {
         variants={bobaVariants}
         whileInView="onscreen"
         initial="offscreen"
-        src={boba2}
+        src={image || boba2}
         alt="Boba result"
       />
       <div className="results-text-container">
         <h2 className="results-title">
           Results: <br />
-          <span className="results-name">Brown Sugar Pearl Milk Tea</span>
+          <span className="results-name">
+            {name || "Brown Sugar Pearl Milk Tea"}
+          </span>
         </h2>
         <div className="results-description">
           <p>
-            Brown Sugar Pearl Milk Tea, a Taiwanese delight born in Taichung.
-            This delectable drink blends fresh cold milk with rich brown sugar
-            caramel, creating a symphony of flavors. Topped with chewy tapioca
-            pearls, it's a treat that's taken the world by storm.
+            {description ||
+              "Brown Sugar Pearl Milk Tea, a Taiwanese delight born in Taichung. This delectable drink blends fresh cold milk with rich brown sugar caramel, creating a symphony of flavors. Topped with chewy tapioca pearls, it's a treat that's taken the world by storm."}
           </p>
-
           <motion.div className="results-tags">
-            {sampletags.map((tag) => (
-              <div className="results-tag" key={tag.key}>
-                {tag.name}
-              </div>
-            ))}
+            {tags ||
+              sampletags.map((tag) => (
+                <div className="results-tag" key={tag.key}>
+                  {tag.name}
+                </div>
+              ))}
           </motion.div>
         </div>
         <motion.div

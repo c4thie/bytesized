@@ -16,7 +16,14 @@ import { GoogleMap, useJsApiLoader } from "@react-google-maps/api";
 import LocationCard from "../components/LocationCard";
 import Loading from "../components/Loading";
 import MapMarker from "../components/MapMarker";
-import { boba2 } from "../assets";
+import {
+  boba2,
+  pinkTwinkle,
+  bobaquiz12,
+  bobaquiz23,
+  bobaquiz24,
+  bobaquiz22,
+} from "../assets";
 import { motion } from "framer-motion";
 import "./MapPage.css";
 
@@ -118,7 +125,7 @@ const MapPage = () => {
             <Image
               boxSize="95"
               objectFit="cover"
-              src={boba2}
+              src={"res.image" || boba2}
               alt="boba image"
             />
             <Flex direction="column">
@@ -138,7 +145,7 @@ const MapPage = () => {
                 fontWeight="bold"
                 textTransform=""
               >
-                Brown Sugar Milk Tea
+                {"res.name" || "Brown Sugar Milk Tea"}
               </Text>
               <ChakraLink
                 as={ReactRouterLink}
@@ -163,8 +170,8 @@ const MapPage = () => {
         </Box>
         <LocationCard
           name="CoCo Fresh Tea & Juice"
-          distance={2.6}
-          price={7.99}
+          distance={2.9}
+          price={8.99}
           hours="11:00-23:00"
           lat={43.47284174311075}
           lng={80.53388417305472}
@@ -179,39 +186,39 @@ const MapPage = () => {
         />
         <LocationCard
           name="Machi Machi"
-          distance={2.6}
-          price={7.99}
+          distance={2.5}
+          price={10.99}
           hours="11:00-23:00"
           lat={43.47301112552648}
           lng={-80.53501529298342}
         />
         <LocationCard
           name="Gong Cha"
-          distance={2.6}
-          price={7.99}
+          distance={1.4}
+          price={8.99}
           hours="11:00-23:00"
           lat={43.47623215976741}
           lng={-80.53861950549259}
         />
         <LocationCard
           name="The Alley"
-          distance={2.6}
-          price={7.99}
+          distance={1.0}
+          price={5.99}
           hours="11:00-23:00"
           lat={43.47177310692343}
           lng={-80.538539933834237}
         />
         <LocationCard
           name="Chatime"
-          distance={2.6}
-          price={7.99}
+          distance={0.9}
+          price={5.99}
           hours="11:00-23:00"
           lat={43.47291357044051}
           lng={-80.54269479945117}
         />
         <LocationCard
           name="Sweet Dreams"
-          distance={2.6}
+          distance={1.0}
           price={7.99}
           hours="11:00-23:00"
           lat={43.47207286948884}

@@ -1,17 +1,22 @@
+require("dotenv").config();
+
 const pg = require("pg"); // Import the pg module
-const createPool = require("@databases/pg");
-var fs = require("fs");
 const Pool = pg.Pool; // Use pg.Pool
 
 const pool = new Pool({
-  user: process.env.DB_USER,
-  host: process.env.DB_HOST,
-  database: process.env.DB_NAME,
-  password: process.env.DB_PASSWORD,
-  port: process.env.DB_PORT,
+  // user: process.env.DB_USER,
+  // host: process.env.DB_HOST,
+  // database: process.env.DB_NAME,
+  // password: process.env.DB_PASSWORD,
+  // port: process.env.DB_PORT,
+  user: "postgres",
+  host: "localhost",
+  database: "boba",
+  password: "12345",
+  port: 5432,
 });
 
-console.log(process.env.DB_PASSWORD);
+// console.log(process.env.DB_PASSWORD);
 
 pool.on("connect", () => {
   console.log("connected to the Database");
